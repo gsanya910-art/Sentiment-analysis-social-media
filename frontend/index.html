@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Social Media Sentiment Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>📊 Social Media Sentiment Dashboard</h1>
+        <p>Real-time brand sentiment analysis from Twitter</p>
+      </header>
+
+      <div class="health-status">
+        <div class="status-indicator" id="statusIndicator">
+          <span class="status-dot"></span>
+          <span>Checking API status...</span>
+        </div>
+      </div>
+
+      <div class="dashboard">
+        <!-- Analysis Section -->
+        <div class="card">
+          <h2>🔍 Quick Sentiment Analysis</h2>
+          <div class="input-group">
+            <textarea
+              id="textInput"
+              placeholder="Enter text to analyze sentiment..."
+            ></textarea>
+            <button onclick="analyzeText()">Analyze Sentiment</button>
+          </div>
+          <div id="textResult" class="result"></div>
+        </div>
+
+        <!-- Twitter Monitoring Section -->
+        <div class="card">
+          <h2>🐦 Twitter Brand Monitor</h2>
+          <div class="input-group">
+            <input
+              type="text"
+              id="keywordInput"
+              placeholder="Enter brand/keyword (e.g., apple, tesla)"
+            />
+            <input
+              type="number"
+              id="tweetCount"
+              placeholder="Count"
+              value="10"
+              min="1"
+              max="100"
+            />
+            <button onclick="analyzeTwitter()">Analyze Tweets</button>
+          </div>
+
+          <div id="twitterResults">
+            <div class="stats-grid" id="statsGrid"></div>
+            <div class="tweets-list" id="tweetsList"></div>
+          </div>
+        </div>
+
+        <!-- Live Trends Section -->
+        <div class="card">
+          <h2>📈 Live Sentiment Trends</h2>
+          <div class="input-group">
+            <input
+              type="text"
+              id="trendKeyword"
+              placeholder="Enter keyword for trends"
+            />
+            <button onclick="loadTrends()">Show Trends</button>
+          </div>
+
+          <div class="trends-container">
+            <div class="chart-container">
+              <canvas id="sentimentChart"></canvas>
+            </div>
+            <div class="hourly-trends" id="hourlyTrends"></div>
+          </div>
+        </div>
+
+        <!-- Batch Analysis Section -->
+        <div class="card">
+          <h2>📝 Batch Text Analysis</h2>
+          <div class="input-group">
+            <textarea
+              id="batchTextInput"
+              placeholder="Enter multiple texts (one per line)..."
+            ></textarea>
+            <button onclick="analyzeBatch()">Analyze Batch</button>
+          </div>
+          <div id="batchResults" class="result"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
+  </body>
+</html>
